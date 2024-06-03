@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c5wsc8tj1deen"]
+
+[ext_resource type="Shader" path="res://src/shaders/2dDropShadow.gdshader" id="1_le0xl"]
+
+[resource]
+shader = ExtResource("1_le0xl")
+shader_parameter/deform = Vector2(0.005, 0.065)
+shader_parameter/offset = Vector2(-0.81, -0.455)
+shader_parameter/modulate = Color(0, 0, 0, 1)
+shader_parameter/x_buffer = 1.0
+shader_parameter/y_buffer = 1.0
