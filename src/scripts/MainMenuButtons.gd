@@ -46,13 +46,17 @@ func _ready():
 			elif (config.get_value(section, "vsync") == "false"):
 				DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 				
+				
+			if (typeof(config.get_value(section, "resolution_index")) != TYPE_NIL):
+				resolution_menu.selected = config.get_value(section, "resolution_index")
+				
+			if (typeof(config.get_value(section, "resolution")) != TYPE_NIL):
+				DisplayServer.window_set_size(config.get_value(section, "resolution"))
+				resolution = config.get_value(section, "resolution")
 			
-			resolution_menu.selected = config.get_value(section, "resolution_index")
-			DisplayServer.window_set_size(config.get_value(section, "resolution"))
-			resolution = config.get_value(section, "resolution")
-			
-			AudioServer.set_bus_volume_db(0, linear_to_db(config.get_value(section, "volume")))
-			volume_slider.set_value_no_signal(db_to_linear(AudioServer.get_bus_volume_db(0)))
+			if (typeof(config.get_value(section, "volume")) != TYPE_NIL):
+				AudioServer.set_bus_volume_db(0, linear_to_db(config.get_value(section, "volume")))
+				volume_slider.set_value_no_signal(db_to_linear(AudioServer.get_bus_volume_db(0)))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
